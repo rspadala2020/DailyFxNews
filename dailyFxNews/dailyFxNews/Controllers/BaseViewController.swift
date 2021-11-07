@@ -7,13 +7,13 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+public class BaseViewController: UIViewController {
         
     @IBOutlet weak var collectionview: UICollectionView!
     private var newsViewModel : NewsViewModel!
-    private var dataSource : NewsCollectionViewDataSource<HomeScreenCell,DailyFxNews>!
+    var dataSource : NewsCollectionViewDataSource<HomeScreenCell,DailyFxNews>!
     
-    override func viewDidLoad() {
+    public override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor(red: 5/255, green: 117/255, blue: 230/255, alpha: 1)
         collectionview.contentInset = UIEdgeInsets(top: 10,left: 10,bottom: 10,right: 10)
@@ -24,13 +24,13 @@ class ViewController: UIViewController {
         callToViewModelForUIUpdate()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
+    public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         let textAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
         navigationController?.navigationBar.titleTextAttributes = textAttributes
         navigationController?.navigationBar.largeTitleTextAttributes = textAttributes
     }
-    override func viewWillDisappear(_ animated: Bool) {
+    public override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         let textAttributes = [NSAttributedString.Key.foregroundColor:UIColor.black]
         navigationController?.navigationBar.titleTextAttributes = textAttributes

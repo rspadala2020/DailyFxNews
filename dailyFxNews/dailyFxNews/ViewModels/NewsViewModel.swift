@@ -8,7 +8,7 @@
 import Foundation
 
 class NewsViewModel : NSObject {
-    private var apiService : APIService<Decodable>!
+    var apiService : APIService<Decodable>!
     private(set) var newsData : DailyFxNews! {
         didSet {
             self.newsViewModelToController(nil)
