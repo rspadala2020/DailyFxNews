@@ -7,13 +7,13 @@
 
 import UIKit
 
-public class BaseViewController: UIViewController {
+ class BaseViewController: UIViewController {
         
     @IBOutlet weak var collectionview: UICollectionView!
     private var newsViewModel : NewsViewModel!
     var dataSource : NewsCollectionViewDataSource<HomeScreenCell,DailyFxNews>!
     
-    public override func viewDidLoad() {
+     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor(red: 5/255, green: 117/255, blue: 230/255, alpha: 1)
         collectionview.contentInset = UIEdgeInsets(top: 10,left: 10,bottom: 10,right: 10)
@@ -24,13 +24,13 @@ public class BaseViewController: UIViewController {
         callToViewModelForUIUpdate()
     }
     
-    public override func viewWillAppear(_ animated: Bool) {
+     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         let textAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
         navigationController?.navigationBar.titleTextAttributes = textAttributes
         navigationController?.navigationBar.largeTitleTextAttributes = textAttributes
     }
-    public override func viewWillDisappear(_ animated: Bool) {
+     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         let textAttributes = [NSAttributedString.Key.foregroundColor:UIColor.black]
         navigationController?.navigationBar.titleTextAttributes = textAttributes
@@ -53,7 +53,6 @@ public class BaseViewController: UIViewController {
     func updateDataSource(){
         
         self.dataSource = NewsCollectionViewDataSource(cellIdentifier: "HomeScreenCell", items: [self.newsViewModel.newsData], configureCell: { (cell, evm, titletxt) in
-            print(evm)
             cell.titleLabel.text = titletxt
         })
         
