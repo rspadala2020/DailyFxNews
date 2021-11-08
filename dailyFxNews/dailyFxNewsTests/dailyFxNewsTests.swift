@@ -42,7 +42,7 @@ class dailyFxNewsTests: XCTestCase {
                 DispatchQueue.main.async {
                     self.viewcontroller.viewControllers.first!.showAlert(title: err, message: "", actionTitle: "Ok")
                 }
-                XCTAssertNil("No data was found.")
+                let expect = XCTestExpectation(description: "Alert message is shown")
             } else {
                 let vc: BaseViewController = self.viewcontroller.viewControllers.first! as! BaseViewController
                 vc.updateDataSource()
